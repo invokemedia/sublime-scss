@@ -14,6 +14,7 @@ Here is a short list of things that the other package doesn't have:
 * flexbox
 * columns
 * new `@` rules
+* Improved SVG property support
 
 ### What's Missing?
 
