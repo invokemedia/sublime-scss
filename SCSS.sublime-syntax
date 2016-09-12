@@ -126,6 +126,13 @@ contexts:
         - meta_scope: comment.line.double-slash.scss
         - match: \n
           pop: true
+    - match: /\*
+      scope: punctuation.definition.comment.scss
+      push:
+        - meta_scope: comment.block.scss
+        - match: \*/
+          scope: punctuation.definition.comment.scss
+          pop: true
 
   at-charset:
     - match: \s*((@)charset\b)\s*
