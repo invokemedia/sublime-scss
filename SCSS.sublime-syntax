@@ -94,6 +94,7 @@ contexts:
   # conflicting function names & color constants such as `red`, `green`, or `blue`.
   color-values:
     - include: color-functions
+    - include: sass-color-functions
       # https://www.w3.org/TR/CSS22/syndata.html#color-units
     - match: \b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b
       scope: support.constant.color.w3c-standard-color-name.scss
@@ -1817,6 +1818,21 @@ contexts:
             scope: keyword.other.color-space.scss
           - include: color-values
           - include: percentage-type
+
+  sass-color-functions:
+      # http://sass-lang.com/documentation/Sass/Script/Functions.html#hsl_functions
+    - match: '\b(lightness|adjust-hue|lighten|darken|saturate|desaturate|grayscale|complement|invert|mix|alpha|opacify|fade-in|transparentize|fade-out)(?=\()'
+      scope: support.function.sass.scss
+      push:
+        - meta_scope: meta.function-call.scss
+        - include: function-notation-terminator
+        - match: '\('
+          scope: punctuation.definition.group.begin.scss
+          push:
+          - meta_scope: meta.group.scss
+          - match: '(?=\))'
+            pop: true
+          - include: length-type
 
   unicode-range:
     - match: |-

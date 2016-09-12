@@ -36,7 +36,7 @@ COMMON_VALUES = {
     'break_inside': [
         'auto', 'avoid', 'avoid-page', 'avoid-column', 'avoid-region'
     ],
-    'color': ['currentColor', 'rgb($1)', 'rgba($1)', 'hsl($1)', 'hsla($1)', 'transparent'],
+    'color': ['currentColor', 'rgb($1)', 'rgba($1)', 'hsl($1)', 'hsla($1)', 'transparent', 'lightness($1)', 'adjust-hue($1)', 'lighten($1)', 'darken($1)', 'saturate($1)', 'desaturate($1)', 'grayscale($1)', 'complement($1)', 'invert($1)', 'mix($1)', 'alpha($1)', 'opacify($1)', 'fade-in($1)', 'transparentize($1)', 'fade-out($1)'],
     'font_variant_alternates': [
         'normal', 'historical-forms', 'stylistic($1)', 'styleset($1)',
         'character-variant($1)', 'swash($1)', 'ornaments($1)', 'annotation($1)'
