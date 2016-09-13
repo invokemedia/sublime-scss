@@ -75,6 +75,8 @@ contexts:
     - include: selector
     - include: at-rules
     - include: property-list
+    - include: variable-declaration
+    - include: variables-capture
 
   at-rules:
     - include: at-charset
@@ -112,14 +114,6 @@ contexts:
       captures:
         1: punctuation.definition.constant.scss
 
-  # comment-block:
-  #   - match: /\*
-  #     scope: punctuation.definition.comment.scss
-  #     push:
-  #       - meta_scope: comment.block.scss
-  #       - match: \*/
-  #         scope: punctuation.definition.comment.scss
-  #         pop: true
   comment-block:
     - match: //
       scope: punctuation.definition.comment.scss
@@ -134,6 +128,24 @@ contexts:
         - match: \*/
           scope: punctuation.definition.comment.scss
           pop: true
+
+  variable-declaration:
+    - match: '\s*(\$[A-Za-z0-9_-]+\b)\s*(\:)\s*'
+      scope: meta.selector.scss
+      push:
+        - meta_scope: entity.variable.scss
+        - match: \s*(?=\;)
+          scope: meta.set.variable
+          pop: true
+          captures:
+            1: variable.other.scss
+            2: punctuation.separator.key-value.scss
+
+  variables-capture:
+    - match: '\s*(\$[A-Za-z0-9_-]+\b)\s*'
+      scope: meta.selector.scss
+      captures:
+        1: variable.other.scss
 
   at-charset:
     - match: \s*((@)charset\b)\s*
